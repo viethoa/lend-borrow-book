@@ -2,7 +2,7 @@ package routers
 
 import(
 	"gopkg.in/gin-gonic/gin.v1"
-	"LandBorrowBook/handlers/users"
+	"lend-borrow-book/handlers/users"
 )
 
 func New() *gin.Engine {
