@@ -1,9 +1,5 @@
 {
 	"ImportPath": "lend-borrow-book",
-	"GoVersion": "go1.6",
-	"GodepVersion": "v79",
-	"Packages": [
-		"./..."
-	],
+	"GoVersion": "go1.7",
 	"Deps": []
 }
