@@ -2,9 +2,6 @@
 	"ImportPath": "lend-borrow-book",
 	"GoVersion": "go1.7",
 	"GodepVersion": "v79",
-	"Packages": [
-		"./..."
-	],
 	"Deps": [
 		{
 			"ImportPath": "github.com/gin-gonic/gin/binding",
