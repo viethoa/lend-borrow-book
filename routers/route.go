@@ -1,7 +1,7 @@
 package routers
 
 import(
-	"gopkg.in/gin-gonic/gin.v1"
+	"github.com/gin-gonic/gin"
 	"lend-borrow-book/handlers/users"
 )
 
