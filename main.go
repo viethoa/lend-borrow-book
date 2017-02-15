@@ -4,16 +4,11 @@ import (
 	"net/http"
 	"log"
 	"lend-borrow-book/routers"
+  "lend-borrow-book/env"
 )
 
 func main() {
 	r := routers.New()
-
-  // port := os.Getevn("PORT")
-  // if (port == "") {
-  //   port = "8080"
-  // }
-
-  port := "8080"
+  port := env.Get("PORT")
 	log.Fatal(http.ListenAndServe(":" + port, r))
 }
