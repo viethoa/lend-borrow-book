@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 	"log"
-	"LendBorrowBook/routers"
+	"lend-borrow-book/routers"
 )
 
 func main() {
