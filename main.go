@@ -15,12 +15,3 @@ func main() {
 	log.Fatal(http.ListenAndServe(":" + port, r))
 }
 
-// CREATE TABLE books (
-//    id BIGSERIAL PRIMARY KEY NOT NULL,
-//    name VARCHAR(100) NOT NULL,
-//    short_description VARCHAR(250),
-//    category VARCHAR(100),
-//    status VARCHAR(100),
-//    suggestion VARCHAR(250),
-//    created_at TIMESTAMP
-// );

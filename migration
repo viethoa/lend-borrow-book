@@ -1,0 +1,19 @@
+#!/bin/bash
+
+case $1 in
+"new")
+  [ -z "$2" ] && echo "Missing migration name" || goose create $2 sql
+  ;;
+"setup_db")
+  export PGPASSWORD=$DB_PASSWORD
+  if psql --set=sslmode=$DB_SSL_MODE -U $DB_USERNAME -h $DB_HOST -p $DB_PORT -lqt | cut -d \| -f 1 | grep -qw $DB_NAME; then
+    echo "Database exists"
+  else
+    echo "Creating database"
+    psql --set=sslmode=$DB_SSL_MODE -U $DB_USERNAME -h $DB_HOST -p $DB_PORT -c "CREATE DATABASE $DB_NAME ENCODING 'UTF8' TEMPLATE template0"
+  fi
+  ;;
+*)
+  goose $1
+  ;;
+esac

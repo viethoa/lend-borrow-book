@@ -1,0 +1,3 @@
+development:
+  driver: postgres
+  open: user=$DB_USERNAME dbname=$DB_NAME sslmode=$DB_SSL_MODE host=$DB_HOST password=$DB_PASSWORD port=$DB_PORT
