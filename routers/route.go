@@ -1,24 +1,31 @@
 package routers
 
-import(
-	"gopkg.in/gin-gonic/gin.v1"
-	"lend-borrow-book/handlers/users"
+import (
+  "lend-borrow-book/controllers"
+
+  "github.com/pressly/chi"
+  "github.com/pressly/chi/middleware"
 )
 
-func New() *gin.Engine {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-	    c.JSON(200, gin.H{
-	        "message": "pong",
-	    })
-	})
+var r chi.Router = chi.NewRouter()
 
+func init() {
+  r.Use(middleware.RealIP)
+  r.Use(middleware.Logger)
+  r.Use(middleware.Recoverer)
+}
 
-	usersHandler := r.Group("/users")
-    {
-        usersHandler.POST("/login", users.Login)
-        // v1.POST("/submit", submitEndpoint)
-    }
+// New returns unexported chi Router instance with all mapped route
+func New() chi.Router {
+  r.Route("/", html)
+  r.Route("/api", api)
+  return r
+}
 
-	return r
+func html(r chi.Router) {
+  r.Get("/", controller.Root)
+}
+
+func api(r chi.Router) {
+  r.Route("/book", bookAPI)
 }

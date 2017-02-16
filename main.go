@@ -2,27 +2,25 @@ package main
 
 import (
 	"net/http"
+  "fmt"
 	"log"
 	"lend-borrow-book/routers"
   "lend-borrow-book/env"
-
-  "database/sql"
-  _ "github.com/lib/pq"
 )
 
 func main() {
-  db, err := sql.Open("postgres", "user=VietHoa password=viethoa dbname=lendborrowbook sslmode=disable")
-  if err != nil {
-    log.Fatal(err)
-  }
-
-  var bookID int
-  error := db.QueryRow(`INSERT INTO book (name, short_description, category, status, suggestion) VALUES ('Test Book', 'test desciption', 'none', 'avaiable', 'dont read it') RETURNING id`).Scan(&bookID)
-  if error != nil {
-    log.Fatal(error)
-  }
-
 	r := routers.New()
   port := env.Get("PORT")
+  fmt.Printf("Serving on host: localhost: %s", port)
 	log.Fatal(http.ListenAndServe(":" + port, r))
 }
+
+// CREATE TABLE books (
+//    id BIGSERIAL PRIMARY KEY NOT NULL,
+//    name VARCHAR(100) NOT NULL,
+//    short_description VARCHAR(250),
+//    category VARCHAR(100),
+//    status VARCHAR(100),
+//    suggestion VARCHAR(250),
+//    created_at TIMESTAMP
+// );
