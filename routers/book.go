@@ -8,4 +8,6 @@ import (
 
 func bookAPI(r chi.Router) {
   r.Post("/create", bookapi.Create)
+  r.Get("/getAll", bookapi.GetAll)
+  r.Get("/borrow", bookapi.Borrow)
 }
