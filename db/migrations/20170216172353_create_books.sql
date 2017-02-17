@@ -12,9 +12,17 @@ CREATE TABLE IF NOT EXISTS books (
    created_at TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS transactions (
+   id BIGSERIAL PRIMARY KEY NOT NULL,
+   book_name VARCHAR(100) NOT NULL,
+   email VARCHAR(100) NOT NULL,
+   created_at TIMESTAMP
+);
+
 -- +goose StatementEnd
 
 -- +goose Down
 -- SQL section 'Down' is executed when this migration is rolled back
-DROP TABLE IF EXISTS requests;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS transactions;
 
